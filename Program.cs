@@ -60,7 +60,11 @@ namespace PacmanConsole
 
                 eaten = pacman.Movement(direction, map);
                 ghost.GhostMovement(map);
-                if(selectedClass == 2)ghostHard.GhostMovement(map);
+                if(selectedClass == 2)
+                {
+                    ghostHard.GhostMovement(map);
+                    if (Properties.CheckForPacman(pacman, ghostHard) == true) break;
+                }
 
                 if (eaten == true) score = score + 10 * (selectedClass+1);
                 if (Properties.CheckForPacman(pacman, ghost) == true)
